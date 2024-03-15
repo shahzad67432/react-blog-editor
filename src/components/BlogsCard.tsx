@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 interface blogCardTypes {
     title: string,
@@ -19,7 +19,7 @@ const BlogsCard = ({
 }:blogCardTypes)=>{
     const description = content.slice(0, 200) + '...'
     return (
-        <Link to={`/blog/${id}`}>
+        <NavLink to={`http://localhost:5174/blog/${id}`}>
             <div className="w-full bg-white dark:border md:mt-4 sm:max-w-3xl lg:p-6 sm:w-full p-10 cursor-pointer">
             <div className="flex flex-col justify-center border-b border-slate-400">
                 <div className="text-sm font-light mt-1">
@@ -36,7 +36,7 @@ const BlogsCard = ({
                 </div>
             </div>
             </div>
-        </Link>
+        </NavLink>
     )
 }
 

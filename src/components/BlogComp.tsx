@@ -46,7 +46,6 @@ export const BlogComp = ({blog}:{blog? :Blog})=>{
                 <div className="col-span-5">
                     <div className="flex flex-col">
                         <div>
-                            {/* <div dangerouslySetInnerHTML={{ __html: contentValue }} /> */}
                             <div>
                              {parsedValue}
                             </div>

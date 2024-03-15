@@ -5,8 +5,8 @@ import { Button } from "./Button"
 export const Appbar = ()=>{
     return (
         <div className=" flex justify-between border-b px-16 py-2">
-            <Link to={'/blogs'} className="font-bold text-xl flex justify-center cursor-pointer ">
-                <div className="flex justify-center flex-col text-center ">
+            <Link to={'/blogs'} className="font-normal text-2xl flex items-center justify-center cursor-pointer text-black hover:text-gray-700">
+                <div className="flex flex-col items-center justify-center">
                     Medium
                 </div>
             </Link>

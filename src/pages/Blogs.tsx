@@ -11,7 +11,6 @@ function Blogs() {
   return (
     <>
       <div>
-        <div className="font-thin text-2xl"> Hello TAiliwind</div>
         <Appbar/>
         <div className="flex justify-center">
           <div className="flex justify-center flex-col max-w-3xl sm:w-full">

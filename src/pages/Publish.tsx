@@ -78,7 +78,7 @@ const TextEditor: React.FC = ()=> {
                                         Authorization: `Bearer ${localStorage.getItem("jwt")}`
                                     }
                                 })
-                                navigate(`/blog/${response.data.id}`)
+                                navigate(`http://localhost:5174/blog/${response.data.id}`)
                             }} type="submit" className=" mt-12 inline-flex items-center px-3 py-2.5 text-sm font-thin text-center text-white bg-green-700 rounded-2xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
                                 Publish Post
                             </button>
