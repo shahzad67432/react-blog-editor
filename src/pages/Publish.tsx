@@ -4,14 +4,43 @@ import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 import {useState} from 'react'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Labelledinput from "../components/LabelledInput";
+import { SigninType } from "@shez100x/easytypes";
+import Checkbox from "../components/Checkbox";
 
 const Publish:React.FC = ()=> {
+    const [signInputs, setSignInputs] = useState<SigninType>({
+        email: '',
+        password: '',
+    })
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleChange = (newChecked: boolean) => {
+      setIsChecked(newChecked);
+    }
+    const fetchData = async()=> { 
+        try{
+            const response = await axios.post(`https://backend.shaa1891640.workers.dev/api/v1/user/signin`, signInputs)
+                const jwt = response.data.jwt;
+                await localStorage.setItem("jwt", jwt)
+        }catch(e){console.log(e, "e while fetching")}
+    }
+
 
     return ( 
         <div>
             <div>
                 <Appbar/>
+                <div>
+                    <div className="mt-6 ml-52 font-thin max-w-screen-sm w-80  flex justify-center flex-col">
+                        <Labelledinput placeholder="Enter email" label="Email" onChange={(e)=>{setSignInputs({...signInputs, email:e.target.value})}}/>
+                        <Labelledinput type="password" placeholder="Enter Password" label="Password" onChange={(e)=>{setSignInputs({...signInputs ,email:e.target.value})}}/>
+                    </div>
+                    <div className="ml-52 mt-4 cursor-pointer w-10 h-6 flex justify-center">
+                        <Checkbox checked={isChecked} onChange={handleChange} onClick={fetchData}/>
+                    </div>
+                </div>
                 <TextEditor/>
             </div>
         </div>
@@ -23,7 +52,7 @@ export default Publish;
 const TextEditor: React.FC = ()=> {
     const [title, setTitle] = useState<string>('');
     const [content, setContent] = useState<string>('');
-    const navigate = useNavigate();
+    const [apiResponse, setApiResponse] = useState<string>('');
 
     const modules = {
         toolbar:[
@@ -78,9 +107,12 @@ const TextEditor: React.FC = ()=> {
                                         Authorization: `Bearer ${localStorage.getItem("jwt")}`
                                     }
                                 })
-                                navigate(`http://localhost:5174/blog/${response.data.id}`)
+                                console.log(response)
+                                
+                                setApiResponse(response.data.id)
+                                console.log({apiResponse})
                             }} type="submit" className=" mt-12 inline-flex items-center px-3 py-2.5 text-sm font-thin text-center text-white bg-green-700 rounded-2xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                                Publish Post
+                                <NavLink to={`https://blog-parsing.vercel.app/blog/${apiResponse}`}> Publish Post </NavLink>
                             </button>
                         </div>
                     </div>

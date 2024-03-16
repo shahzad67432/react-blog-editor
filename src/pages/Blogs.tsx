@@ -14,24 +14,7 @@ function Blogs() {
         <Appbar/>
         <div className="flex justify-center">
           <div className="flex justify-center flex-col max-w-3xl sm:w-full">
-            <BlogsCard
-              id={"1"}
-              title={"Learning the advance things day by day"}
-              content={
-                "Learning the advance things day by day would not led machines rule over you Learning the advance things day by day would not led machines rule over you"
-              }
-              publishedDate="17 feb,2023"
-              authorName="Shahzad Ali."
-            />
-            <BlogsCard
-              id={"1"}
-              title={"Learning the advance things day by day"}
-              content={
-                "Learning the advance things day by day would not led machines rule over you Learning the advance things day by day would not led machines rule over you"
-              }
-              publishedDate="17 feb,2023"
-              authorName="Shahzad Ali."
-            />
+            
             {blogs.map((blog) => (
               <BlogsCard
                 id={blog.id}

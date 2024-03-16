@@ -2,7 +2,8 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Labelledinput from './LabelledInput';
-import {SignupType} from '@shez100x/easytypes';
+import { SignupType } from '@shez100x/easytypes';
+
 
 
 const Auth = ({type}:{type: "signin" | "signup"})=>{
@@ -19,7 +20,7 @@ const Auth = ({type}:{type: "signin" | "signup"})=>{
             const response = await axios.post(`https://backend.shaa1891640.workers.dev/api/v1/user/${type === "signup" ? "signup" : "signin"}`, postInputs)
                 const jwt = response.data.jwt;
                 await localStorage.setItem("jwt", jwt)
-                navigate('/blogs')
+                navigate('/')
         }catch(e){console.log(e, "e while fetching")}
     }
     return (
