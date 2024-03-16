@@ -7,7 +7,7 @@ export const Appbar = ()=>{
         <div className=" flex justify-between border-b px-16 py-2">
             <Link to={'/'} className="font-normal text-2xl flex items-center justify-center cursor-pointer text-black hover:text-gray-700">
                 <div className="flex flex-col items-center justify-center">
-                    Medium
+                    Galaxy
                 </div>
             </Link>
             <div>
